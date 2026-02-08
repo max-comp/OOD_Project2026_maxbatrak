@@ -24,5 +24,20 @@ namespace OOD_Project2026_maxbatrak
         {
             InitializeComponent();
         }
+
+        private void QuickNavItinerary_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabs.SelectedItem = ItineraryTab;
+        }
+
+        private void QuickNavBookings_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabs.SelectedItem = BookingsTab;
+        }
+
+        private void QuickNavBudget_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabs.SelectedItem = BudgetTab;
+        }
     }
 }
