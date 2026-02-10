@@ -80,6 +80,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Booking.cs" />
+    <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\ItineraryItem.cs" />
+    <Compile Include="Models\TripItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

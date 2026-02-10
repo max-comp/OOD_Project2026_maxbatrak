@@ -1,0 +1,32 @@
+namespace OOD_Project2026_maxbatrak
+{
+    // The type of an itinerary item shown on the day-by-day schedule.
+    public enum ItineraryItemType
+    {
+        Flight,
+        Activity,
+        Restaurant,
+        Other
+    }
+
+
+    // The type of a booking record.
+
+    public enum BookingType
+    {
+        Flight,
+        Hotel,
+        Transport,
+        Other
+    }
+
+    // Spending category for an expense.
+
+    public enum ExpenseCategory
+    {
+        Dining,
+        Transport,
+        Lodging,
+        Other
+    }
+}
