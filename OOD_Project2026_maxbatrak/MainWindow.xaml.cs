@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,32 +13,75 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OOD_Project2026_maxbatrak.Data;
+using OOD_Project2026_maxbatrak.Models;
 
 namespace OOD_Project2026_maxbatrak
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
+        private TripPlannerContext db;
+        private ObservableCollection<Trip> trips;
+
         public MainWindow()
         {
             InitializeComponent();
+            db = new TripPlannerContext();
+            LoadTrips();
         }
 
-        private void QuickNavItinerary_Click(object sender, RoutedEventArgs e)
+        private void LoadTrips()
         {
-            MainTabs.SelectedItem = ItineraryTab;
+            try
+            {
+                // EF Code First: creates the database automatically on first run
+                db.Database.CreateIfNotExists();
+
+                // Load all trips with their related data from the database
+                var tripList = db.Trips
+                    .Include("ItineraryItems")
+                    .Include("Bookings")
+                    .Include("Expenses")
+                    .ToList();
+
+                trips = new ObservableCollection<Trip>(tripList);
+                TripsListBox.ItemsSource = trips;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Could not load trips from database.\n\n{ex.Message}",
+                    "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-        private void QuickNavBookings_Click(object sender, RoutedEventArgs e)
+        private void TripsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MainTabs.SelectedItem = BookingsTab;
+            var selectedTrip = TripsListBox.SelectedItem as Trip;
+
+            if (selectedTrip == null)
+            {
+                SummaryPlaceholder.Visibility = Visibility.Visible;
+                SummaryPanel.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            SummaryPlaceholder.Visibility = Visibility.Collapsed;
+            SummaryPanel.Visibility = Visibility.Visible;
+
+            SummaryName.Text = selectedTrip.Name;
+            SummaryDates.Text = $"{selectedTrip.StartDate:ddd, MMM dd} – {selectedTrip.EndDate:ddd, MMM dd}";
+            SummaryItineraryCount.Text = $"{selectedTrip.ItineraryItems.Count} item(s)";
+            SummaryBookingsCount.Text = $"{selectedTrip.Bookings.Count} booking(s)";
+            SummaryTotal.Text = $"Total: {selectedTrip.TotalExpenses:C}";
+            SummaryPaid.Text = $"Paid: {selectedTrip.TotalPaid:C}";
+            SummaryOwed.Text = $"Owed: {selectedTrip.TotalOwed:C}";
         }
 
-        private void QuickNavBudget_Click(object sender, RoutedEventArgs e)
+        protected override void OnClosed(EventArgs e)
         {
-            MainTabs.SelectedItem = BudgetTab;
+            base.OnClosed(e);
+            db?.Dispose();
         }
     }
 }

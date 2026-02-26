@@ -1,0 +1,37 @@
+﻿using System;
+
+namespace OOD_Project2026_maxbatrak.Models
+{
+    public class ItineraryItem : TripItem
+    {
+        public TimeSpan Time { get; set; }
+        public ItineraryItemType ItemType { get; set; }
+        public TimeSpan? EndTime { get; set; }
+
+        public ItineraryItem()
+            : base(string.Empty, DateTime.Today)
+        {
+        }
+
+        public ItineraryItem(string title, DateTime date, TimeSpan time, ItineraryItemType itemType)
+            : base(title, date)
+        {
+            Time = time;
+            ItemType = itemType;
+        }
+
+        public override string Summary
+        {
+            get
+            {
+                string timeText = DateTime.Today.Add(Time).ToString("hh:mm tt");
+                return $"{timeText} – {Title} ({ItemType})";
+            }
+        }
+
+        public string TimeDisplay
+        {
+            get { return DateTime.Today.Add(Time).ToString("hh:mm tt"); }
+        }
+    }
+}

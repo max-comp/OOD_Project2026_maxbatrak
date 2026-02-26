@@ -1,10 +1,13 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OOD_Project2026_maxbatrak
+namespace OOD_Project2026_maxbatrak.Models
 {
     //A confirmed booking such as a flight, hotel stay, or transport reservation.
     public class Booking : TripItem
     {
+        //Foreign key back to Trip
+        public int TripId { get; set; }
         public string Reference { get; set; }
         public BookingType BookingType { get; set; }
         public DateTime CheckInDate { get; set; }
@@ -29,6 +32,7 @@ namespace OOD_Project2026_maxbatrak
             To = to;
         }
 
+        [NotMapped]
         public override string Summary
         {
             get
@@ -45,7 +49,7 @@ namespace OOD_Project2026_maxbatrak
             }
         }
 
-
+        [NotMapped]
         public string DateDisplay
         {
             get

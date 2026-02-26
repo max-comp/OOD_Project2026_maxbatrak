@@ -1,6 +1,6 @@
-namespace OOD_Project2026_maxbatrak
+namespace OOD_Project2026_maxbatrak.Models
 {
-    // The type of an itinerary item shown on the day-by-day schedule.
+    //The type of an itinerary item shown on the day-by-day schedule.
     public enum ItineraryItemType
     {
         Flight,

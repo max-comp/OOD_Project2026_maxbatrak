@@ -1,0 +1,89 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using OOD_Project2026_maxbatrak.Data;
+using OOD_Project2026_maxbatrak.Models;
+
+namespace OOD_Project2026_maxbatrak
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        private TripPlannerContext db;
+        private ObservableCollection<Trip> trips;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            db = new TripPlannerContext();
+            LoadTrips();
+        }
+
+        private void LoadTrips()
+        {
+            try
+            {
+                // EF Code First: creates the database automatically on first run
+                db.Database.CreateIfNotExists();
+
+                // Load all trips with their related data from the database
+                var tripList = db.Trips
+                    .Include("ItineraryItems")
+                    .Include("Bookings")
+                    .Include("Expenses")
+                    .ToList();
+
+                trips = new ObservableCollection<Trip>(tripList);
+                TripsListBox.ItemsSource = trips;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Could not load trips from database.\n\n{ex.Message}",
+                    "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void TripsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedTrip = TripsListBox.SelectedItem as Trip;
+
+            if (selectedTrip == null)
+            {
+                SummaryPlaceholder.Visibility = Visibility.Visible;
+                SummaryPanel.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            SummaryPlaceholder.Visibility = Visibility.Collapsed;
+            SummaryPanel.Visibility = Visibility.Visible;
+
+            SummaryName.Text = selectedTrip.Name;
+            SummaryDates.Text = $"{selectedTrip.StartDate:ddd, MMM dd} – {selectedTrip.EndDate:ddd, MMM dd}";
+            SummaryItineraryCount.Text = $"{selectedTrip.ItineraryItems.Count} item(s)";
+            SummaryBookingsCount.Text = $"{selectedTrip.Bookings.Count} booking(s)";
+            SummaryTotal.Text = $"Total: {selectedTrip.TotalExpenses:C}";
+            SummaryPaid.Text = $"Paid: {selectedTrip.TotalPaid:C}";
+            SummaryOwed.Text = $"Owed: {selectedTrip.TotalOwed:C}";
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            db?.Dispose();
+        }
+    }
+}

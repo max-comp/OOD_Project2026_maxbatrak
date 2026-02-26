@@ -46,3 +46,7 @@ C:\Users\maxba\OneDrive - Atlantic TU\Documents\2 Year\OOD\Personal Project\OOD_
 C:\Users\maxba\OneDrive - Atlantic TU\Documents\2 Year\OOD\Personal Project\OOD_Project2026_maxbatrak\OOD_Project2026_maxbatrak\obj\Debug\OOD_Proj.8D728C54.Up2Date
 C:\Users\maxba\OneDrive - Atlantic TU\Documents\2 Year\OOD\Personal Project\OOD_Project2026_maxbatrak\OOD_Project2026_maxbatrak\obj\Debug\OOD_Project2026_maxbatrak.exe
 C:\Users\maxba\OneDrive - Atlantic TU\Documents\2 Year\OOD\Personal Project\OOD_Project2026_maxbatrak\OOD_Project2026_maxbatrak\obj\Debug\OOD_Project2026_maxbatrak.pdb
+C:\Users\maxba\OneDrive - Atlantic TU\Documents\2 Year\OOD\Personal Project\OOD_Project2026_maxbatrak\OOD_Project2026_maxbatrak\bin\Debug\EntityFramework.dll
+C:\Users\maxba\OneDrive - Atlantic TU\Documents\2 Year\OOD\Personal Project\OOD_Project2026_maxbatrak\OOD_Project2026_maxbatrak\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\maxba\OneDrive - Atlantic TU\Documents\2 Year\OOD\Personal Project\OOD_Project2026_maxbatrak\OOD_Project2026_maxbatrak\bin\Debug\EntityFramework.xml
+C:\Users\maxba\OneDrive - Atlantic TU\Documents\2 Year\OOD\Personal Project\OOD_Project2026_maxbatrak\OOD_Project2026_maxbatrak\bin\Debug\EntityFramework.SqlServer.xml

@@ -1,9 +1,13 @@
 using System;
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace OOD_Project2026_maxbatrak.Models
 {
     public class ItineraryItem : TripItem
     {
+        //Foreign key back to Trip
+        public int TripId { get; set; }
         public TimeSpan Time { get; set; }
         public ItineraryItemType ItemType { get; set; }
         public TimeSpan? EndTime { get; set; }
@@ -20,6 +24,7 @@ namespace OOD_Project2026_maxbatrak.Models
             ItemType = itemType;
         }
 
+        [NotMapped]
         public override string Summary
         {
             get
@@ -29,6 +34,7 @@ namespace OOD_Project2026_maxbatrak.Models
             }
         }
 
+        [NotMapped]
         public string TimeDisplay
         {
             get { return DateTime.Today.Add(Time).ToString("hh:mm tt"); }

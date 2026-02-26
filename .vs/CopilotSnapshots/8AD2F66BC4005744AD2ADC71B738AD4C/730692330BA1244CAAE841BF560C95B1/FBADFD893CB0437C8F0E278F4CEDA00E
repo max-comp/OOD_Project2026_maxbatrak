@@ -1,0 +1,82 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using OOD_Project2026_maxbatrak.Models;
+
+namespace OOD_Project2026_maxbatrak
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        private ObservableCollection<Trip> trips;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            LoadSampleData();
+        }
+
+        private void LoadSampleData()
+        {
+            trips = new ObservableCollection<Trip>();
+
+            // Sample trip so the summary panel has something to show
+            var trip = new Trip("Rome Holiday", new DateTime(2025, 7, 20), new DateTime(2025, 7, 27));
+
+            trip.ItineraryItems.Add(new ItineraryItem("Visit Colosseum", new DateTime(2025, 7, 21),
+                new TimeSpan(9, 0, 0), ItineraryItemType.Activity));
+            trip.ItineraryItems.Add(new ItineraryItem("Dinner at Trattoria", new DateTime(2025, 7, 21),
+                new TimeSpan(19, 0, 0), ItineraryItemType.Restaurant));
+
+            trip.Bookings.Add(new Booking("DUB to FCO", "FR1234", BookingType.Flight,
+                new DateTime(2025, 7, 20), null, "Dublin", "Rome"));
+            trip.Bookings.Add(new Booking("Hotel Marriott", "HM5678", BookingType.Hotel,
+                new DateTime(2025, 7, 20), new DateTime(2025, 7, 27), "Rome", ""));
+
+            trip.Expenses.Add(new Expense("Flights", ExpenseCategory.Transport, 180m, true));
+            trip.Expenses.Add(new Expense("Hotel", ExpenseCategory.Lodging, 650m, true));
+            trip.Expenses.Add(new Expense("Restaurant", ExpenseCategory.Dining, 45m, false));
+
+            trips.Add(trip);
+
+            TripsListBox.ItemsSource = trips;
+        }
+
+        private void TripsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedTrip = TripsListBox.SelectedItem as Trip;
+
+            if (selectedTrip == null)
+            {
+                SummaryPlaceholder.Visibility = Visibility.Visible;
+                SummaryPanel.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            SummaryPlaceholder.Visibility = Visibility.Collapsed;
+            SummaryPanel.Visibility = Visibility.Visible;
+
+            SummaryName.Text = selectedTrip.Name;
+            SummaryDates.Text = $"{selectedTrip.StartDate:ddd, MMM dd} – {selectedTrip.EndDate:ddd, MMM dd}";
+            SummaryItineraryCount.Text = $"{selectedTrip.ItineraryItems.Count} item(s)";
+            SummaryBookingsCount.Text = $"{selectedTrip.Bookings.Count} booking(s)";
+            SummaryTotal.Text = $"Total: {selectedTrip.TotalExpenses:C}";
+            SummaryPaid.Text = $"Paid: {selectedTrip.TotalPaid:C}";
+            SummaryOwed.Text = $"Owed: {selectedTrip.TotalOwed:C}";
+        }
+    }
+}

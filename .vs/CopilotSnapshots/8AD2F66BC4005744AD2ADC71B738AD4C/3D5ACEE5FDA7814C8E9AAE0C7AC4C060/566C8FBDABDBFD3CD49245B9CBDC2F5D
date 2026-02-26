@@ -1,0 +1,27 @@
+﻿using System;
+
+namespace OOD_Project2026_maxbatrak
+{
+    // Abstract base class for all items that belong to a trip.
+    // Demonstrates meaningful use of abstraction — every trip-related item
+    // has a title, a date, and must provide its own display summary.
+    public abstract class TripItem
+    {
+        public string Title { get; set; }
+        public DateTime Date { get; set; }
+
+
+        public abstract string Summary { get; }
+
+        protected TripItem(string title, DateTime date)
+        {
+            Title = title;
+            Date = date;
+        }
+
+        public override string ToString()
+        {
+            return Summary;
+        }
+    }
+}
