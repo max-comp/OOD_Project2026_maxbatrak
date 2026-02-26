@@ -3,32 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|c:\\users\\maxba\\onedrive - atlantic tu\\documents\\2 year\\ood\\personal project\\ood_project2026_maxbatrak\\ood_project2026_maxbatrak\\models\\tripitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\models\\tripitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|c:\\users\\maxba\\onedrive - atlantic tu\\documents\\2 year\\ood\\personal project\\ood_project2026_maxbatrak\\ood_project2026_maxbatrak\\models\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\models\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|c:\\users\\maxba\\onedrive - atlantic tu\\documents\\2 year\\ood\\personal project\\ood_project2026_maxbatrak\\ood_project2026_maxbatrak\\models\\itineraryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\models\\itineraryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|c:\\users\\maxba\\onedrive - atlantic tu\\documents\\2 year\\ood\\personal project\\ood_project2026_maxbatrak\\ood_project2026_maxbatrak\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|c:\\users\\maxba\\onedrive - atlantic tu\\documents\\2 year\\ood\\personal project\\ood_project2026_maxbatrak\\ood_project2026_maxbatrak\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\ood_project2026_maxbatrak\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\ood_project2026_maxbatrak\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|c:\\users\\maxba\\onedrive - atlantic tu\\documents\\2 year\\ood\\personal project\\ood_project2026_maxbatrak\\ood_project2026_maxbatrak\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\ood_project2026_maxbatrak\\models\\tripitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\models\\tripitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\ood_project2026_maxbatrak\\models\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\models\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\ood_project2026_maxbatrak\\models\\itineraryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\models\\itineraryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\ood_project2026_maxbatrak\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,24 +38,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Booking.cs",
-              "DocumentMoniker": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\Models\\Booking.cs",
-              "RelativeDocumentMoniker": "OOD_Project2026_maxbatrak\\Models\\Booking.cs",
-              "ToolTip": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\Models\\Booking.cs",
-              "RelativeToolTip": "OOD_Project2026_maxbatrak\\Models\\Booking.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T20:36:32.415Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "ItineraryItem.cs",
               "DocumentMoniker": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\Models\\ItineraryItem.cs",
               "RelativeDocumentMoniker": "OOD_Project2026_maxbatrak\\Models\\ItineraryItem.cs",
@@ -63,12 +50,36 @@
               "RelativeToolTip": "OOD_Project2026_maxbatrak\\Models\\ItineraryItem.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAkwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T20:36:21.894Z",
+              "WhenOpened": "2026-02-10T20:36:21.894Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "OOD_Project2026_maxbatrak\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\MainWindow.xaml.cs",
+              "RelativeToolTip": "OOD_Project2026_maxbatrak\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-04T14:00:07.157Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\Models\\Booking.cs",
+              "RelativeDocumentMoniker": "OOD_Project2026_maxbatrak\\Models\\Booking.cs",
+              "ToolTip": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\Models\\Booking.cs",
+              "RelativeToolTip": "OOD_Project2026_maxbatrak\\Models\\Booking.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T20:36:32.415Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Enums.cs",
               "DocumentMoniker": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\Models\\Enums.cs",
               "RelativeDocumentMoniker": "OOD_Project2026_maxbatrak\\Models\\Enums.cs",
@@ -76,12 +87,11 @@
               "RelativeToolTip": "OOD_Project2026_maxbatrak\\Models\\Enums.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T20:36:12.706Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T20:36:12.706Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "TripItem.cs",
               "DocumentMoniker": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\Models\\TripItem.cs",
               "RelativeDocumentMoniker": "OOD_Project2026_maxbatrak\\Models\\TripItem.cs",
@@ -89,12 +99,11 @@
               "RelativeToolTip": "OOD_Project2026_maxbatrak\\Models\\TripItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T20:36:06.164Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T20:36:06.164Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\App.xaml",
               "RelativeDocumentMoniker": "OOD_Project2026_maxbatrak\\App.xaml",
@@ -106,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\MainWindow.xaml",
               "RelativeDocumentMoniker": "OOD_Project2026_maxbatrak\\MainWindow.xaml",
@@ -114,19 +123,6 @@
               "RelativeToolTip": "OOD_Project2026_maxbatrak\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-02-04T14:00:07.579Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "OOD_Project2026_maxbatrak\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\MainWindow.xaml.cs",
-              "RelativeToolTip": "OOD_Project2026_maxbatrak\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T14:00:07.157Z",
               "EditorCaption": ""
             }
           ]
