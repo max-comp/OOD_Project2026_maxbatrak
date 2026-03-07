@@ -29,7 +29,7 @@
 
                     <GroupBox Header="Trips List" Margin="0,0,8,0">
                         <DockPanel>
-                            <Button DockPanel.Dock="Bottom" Content="Add Trip" Margin="8" />
+                            <Button DockPanel.Dock="Bottom" Content="Add Trip" Margin="8" Click="AddTrip_Click" />
                             <ListBox x:Name="TripsListBox" Margin="8" DisplayMemberPath="Name" SelectionChanged="TripsListBox_SelectionChanged" />
                         </DockPanel>
                     </GroupBox>
@@ -88,18 +88,18 @@
 
                     <GroupBox Header="Days List" Margin="0,0,8,0">
                         <DockPanel>
-                            <ListBox Margin="8" />
-                            <Button DockPanel.Dock="Bottom" Content="Add Item" Margin="8" />
+                            <Button DockPanel.Dock="Bottom" Content="Add Item" Margin="8" Click="AddItineraryItem_Click" />
+                            <ListBox x:Name="DaysListBox" Margin="8" DisplayMemberPath="" SelectionChanged="DaysListBox_SelectionChanged" />
                         </DockPanel>
                     </GroupBox>
 
                     <GroupBox Grid.Column="1" Header="Items List" Margin="8,0">
-                        <ListView Margin="8">
+                        <ListView x:Name="ItineraryListView" Margin="8" SelectionChanged="ItineraryListView_SelectionChanged">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Time" Width="80" />
-                                    <GridViewColumn Header="Title" Width="140" />
-                                    <GridViewColumn Header="Type" Width="100" />
+                                    <GridViewColumn Header="Time" Width="80" DisplayMemberBinding="{Binding TimeDisplay}" />
+                                    <GridViewColumn Header="Title" Width="140" DisplayMemberBinding="{Binding Title}" />
+                                    <GridViewColumn Header="Type" Width="100" DisplayMemberBinding="{Binding ItemType}" />
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -108,10 +108,10 @@
                     <GroupBox Grid.Column="2" Header="Add / Edit" Margin="8,0,0,0">
                         <StackPanel Margin="8">
                             <TextBlock Text="Title" />
-                            <TextBox Margin="0,4,0,8" />
+                            <TextBox x:Name="ItineraryTitleBox" Margin="0,4,0,8" />
 
                             <TextBlock Text="Type" />
-                            <ComboBox Margin="0,4,0,8">
+                            <ComboBox x:Name="ItineraryTypeCombo" Margin="0,4,0,8">
                                 <ComboBoxItem Content="Flight" />
                                 <ComboBoxItem Content="Activity" />
                                 <ComboBoxItem Content="Restaurant" />
@@ -119,14 +119,14 @@
                             </ComboBox>
 
                             <TextBlock Text="Date" />
-                            <DatePicker Margin="0,4,0,8" />
+                            <DatePicker x:Name="ItineraryDatePicker" Margin="0,4,0,8" />
 
-                            <TextBlock Text="Time" />
-                            <TextBox Margin="0,4,0,12" />
+                            <TextBlock Text="Time (HH:mm)" />
+                            <TextBox x:Name="ItineraryTimeBox" Margin="0,4,0,12" />
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Button Content="Save" Margin="0,0,8,0" />
-                                <Button Content="Cancel" />
+                                <Button Content="Save" Margin="0,0,8,0" Click="SaveItineraryItem_Click" />
+                                <Button Content="Cancel" Click="CancelItineraryItem_Click" />
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
@@ -151,25 +151,25 @@
 
                     <GroupBox Header="Booking List" Margin="0,0,8,0">
                         <DockPanel>
-                            <ListView Margin="8">
+                            <Button DockPanel.Dock="Bottom" Content="Add Booking" Margin="8" Click="AddBooking_Click" />
+                            <ListView x:Name="BookingsListView" Margin="8" SelectionChanged="BookingsListView_SelectionChanged">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="Booking" Width="180" />
-                                        <GridViewColumn Header="Dates" Width="140" />
+                                        <GridViewColumn Header="Booking" Width="180" DisplayMemberBinding="{Binding Title}" />
+                                        <GridViewColumn Header="Dates" Width="140" DisplayMemberBinding="{Binding DateDisplay}" />
                                     </GridView>
                                 </ListView.View>
                             </ListView>
-                            <Button DockPanel.Dock="Bottom" Content="Add Booking" Margin="8" />
                         </DockPanel>
                     </GroupBox>
 
                     <GroupBox Grid.Column="1" Header="Add / Edit" Margin="8,0,0,0">
                         <StackPanel Margin="8">
                             <TextBlock Text="Reference" />
-                            <TextBox Margin="0,4,0,8" />
+                            <TextBox x:Name="BookingReferenceBox" Margin="0,4,0,8" />
 
                             <TextBlock Text="Type" />
-                            <ComboBox Margin="0,4,0,8">
+                            <ComboBox x:Name="BookingTypeCombo" Margin="0,4,0,8">
                                 <ComboBoxItem Content="Flight" />
                                 <ComboBoxItem Content="Hotel" />
                                 <ComboBoxItem Content="Transport" />
@@ -177,17 +177,17 @@
                             </ComboBox>
 
                             <TextBlock Text="Check-in / Depart" />
-                            <DatePicker Margin="0,4,0,8" />
+                            <DatePicker x:Name="BookingDatePicker" Margin="0,4,0,8" />
 
                             <TextBlock Text="From" />
-                            <TextBox Margin="0,4,0,8" />
+                            <TextBox x:Name="BookingFromBox" Margin="0,4,0,8" />
 
                             <TextBlock Text="To" />
-                            <TextBox Margin="0,4,0,12" />
+                            <TextBox x:Name="BookingToBox" Margin="0,4,0,12" />
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Button Content="Save" Margin="0,0,8,0" />
-                                <Button Content="Cancel" />
+                                <Button Content="Save" Margin="0,0,8,0" Click="SaveBooking_Click" />
+                                <Button Content="Cancel" Click="CancelBooking_Click" />
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
@@ -212,23 +212,23 @@
 
                     <GroupBox Header="Expenses List" Margin="0,0,8,0">
                         <DockPanel>
-                            <ListView Margin="8">
+                            <Button DockPanel.Dock="Bottom" Content="Add Expense" Margin="8" Click="AddExpense_Click" />
+                            <ListView x:Name="ExpensesListView" Margin="8" SelectionChanged="ExpensesListView_SelectionChanged">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="Title" Width="140" />
-                                        <GridViewColumn Header="Category" Width="120" />
-                                        <GridViewColumn Header="Amount" Width="80" />
+                                        <GridViewColumn Header="Title" Width="140" DisplayMemberBinding="{Binding Title}" />
+                                        <GridViewColumn Header="Category" Width="120" DisplayMemberBinding="{Binding Category}" />
+                                        <GridViewColumn Header="Amount" Width="80" DisplayMemberBinding="{Binding AmountDisplay}" />
                                     </GridView>
                                 </ListView.View>
                             </ListView>
-                            <Button DockPanel.Dock="Bottom" Content="Add Expense" Margin="8" />
                         </DockPanel>
                     </GroupBox>
 
                     <GroupBox Grid.Column="1" Header="Add / Edit" Margin="8,0,0,0">
                         <StackPanel Margin="8">
                             <TextBlock Text="Category" />
-                            <ComboBox Margin="0,4,0,8">
+                            <ComboBox x:Name="ExpenseCategoryCombo" Margin="0,4,0,8">
                                 <ComboBoxItem Content="Dining" />
                                 <ComboBoxItem Content="Transport" />
                                 <ComboBoxItem Content="Lodging" />
@@ -236,20 +236,20 @@
                             </ComboBox>
 
                             <TextBlock Text="Title" />
-                            <TextBox Margin="0,4,0,8" />
+                            <TextBox x:Name="ExpenseTitleBox" Margin="0,4,0,8" />
 
                             <TextBlock Text="Amount" />
-                            <TextBox Margin="0,4,0,8" />
+                            <TextBox x:Name="ExpenseAmountBox" Margin="0,4,0,8" />
 
                             <TextBlock Text="Paid" />
-                            <ComboBox Margin="0,4,0,12">
+                            <ComboBox x:Name="ExpensePaidCombo" Margin="0,4,0,12">
                                 <ComboBoxItem Content="Yes" />
                                 <ComboBoxItem Content="No" />
                             </ComboBox>
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Button Content="Save" Margin="0,0,8,0" />
-                                <Button Content="Cancel" />
+                                <Button Content="Save" Margin="0,0,8,0" Click="SaveExpense_Click" />
+                                <Button Content="Cancel" Click="CancelExpense_Click" />
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
