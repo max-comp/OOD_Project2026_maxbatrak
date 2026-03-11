@@ -6,7 +6,7 @@ namespace OOD_Project2026_maxbatrak.Models
     //A single expense entry used for budget tracking.
     //Inherits Title and Date from TripItem and adds financial details.
 
-    public class Expense : TripItem
+    public class Expense : TripItem, ISearchable, IDeletable
     {
         // Foreign key back to Trip
         public int TripId { get; set; }
@@ -48,6 +48,22 @@ namespace OOD_Project2026_maxbatrak.Models
         public string PaidDisplay
         {
             get { return IsPaid ? "Paid" : "Owed"; }
+        }
+
+        // ISearchable
+        public bool MatchesSearch(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query)) return true;
+            query = query.ToLower();
+            return Title.ToLower().Contains(query) ||
+                   Category.ToString().ToLower().Contains(query);
+        }
+
+        // IDeletable
+        [NotMapped]
+        public string DeleteConfirmationMessage
+        {
+            get { return $"Delete expense \"{Title}\" ({Amount:C})?"; }
         }
     }
 }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace OOD_Project2026_maxbatrak.Models
 {
     //A confirmed booking such as a flight, hotel stay, or transport reservation.
-    public class Booking : TripItem
+    public class Booking : TripItem, ISearchable, IDeletable
     {
         //Foreign key back to Trip
         public int TripId { get; set; }
@@ -58,6 +58,25 @@ namespace OOD_Project2026_maxbatrak.Models
                     ? $"{CheckInDate:MMM dd} – {CheckOutDate:MMM dd}"
                     : $"{CheckInDate:ddd, MMM dd}";
             }
+        }
+
+        // ISearchable
+        public bool MatchesSearch(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query)) return true;
+            query = query.ToLower();
+            return Title.ToLower().Contains(query) ||
+                   (Reference ?? "").ToLower().Contains(query) ||
+                   (From ?? "").ToLower().Contains(query) ||
+                   (To ?? "").ToLower().Contains(query) ||
+                   BookingType.ToString().ToLower().Contains(query);
+        }
+
+        // IDeletable
+        [NotMapped]
+        public string DeleteConfirmationMessage
+        {
+            get { return $"Delete booking \"{Title}\"?"; }
         }
     }
 }

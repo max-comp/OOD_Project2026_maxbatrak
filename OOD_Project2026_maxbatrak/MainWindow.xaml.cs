@@ -2,8 +2,17 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using OOD_Project2026_maxbatrak.Data;
 using OOD_Project2026_maxbatrak.Models;
 
@@ -13,6 +22,11 @@ namespace OOD_Project2026_maxbatrak
     {
         private TripPlannerContext db;
         private ObservableCollection<Trip> trips;
+
+        // Track which item is being edited (null = adding new)
+        private ItineraryItem editingItineraryItem;
+        private Booking editingBooking;
+        private Expense editingExpense;
 
         public MainWindow()
         {
@@ -26,6 +40,7 @@ namespace OOD_Project2026_maxbatrak
         {
             get { return TripsListBox.SelectedItem as Trip; }
         }
+
 
         private void LoadTrips()
         {
@@ -168,7 +183,7 @@ namespace OOD_Project2026_maxbatrak
             var item = ItineraryListView.SelectedItem as ItineraryItem;
             if (item == null) return;
 
-            // Load selected item into the form for viewing
+            editingItineraryItem = item;
             ItineraryTitleBox.Text = item.Title;
             ItineraryTypeCombo.SelectedIndex = (int)item.ItemType;
             ItineraryDatePicker.SelectedDate = item.Date;
@@ -177,17 +192,53 @@ namespace OOD_Project2026_maxbatrak
 
         private void AddItineraryItem_Click(object sender, RoutedEventArgs e)
         {
+            editingItineraryItem = null;
             ClearItineraryForm();
         }
 
         private void SaveItineraryItem_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: validate fields, create/update ItineraryItem, save to database
-            MessageBox.Show("Save not yet implemented – coming soon.", "TODO", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (SelectedTrip == null)
+            {
+                MessageBox.Show("Please select a trip first.", "No Trip", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(ItineraryTitleBox.Text) ||
+                ItineraryTypeCombo.SelectedIndex < 0 ||
+                !ItineraryDatePicker.SelectedDate.HasValue ||
+                !TimeSpan.TryParse(ItineraryTimeBox.Text, out TimeSpan time))
+            {
+                MessageBox.Show("Please fill in all fields. Time format: HH:mm", "Validation", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var type = (ItineraryItemType)ItineraryTypeCombo.SelectedIndex;
+
+            if (editingItineraryItem != null)
+            {
+                editingItineraryItem.Title = ItineraryTitleBox.Text.Trim();
+                editingItineraryItem.ItemType = type;
+                editingItineraryItem.Date = ItineraryDatePicker.SelectedDate.Value;
+                editingItineraryItem.Time = time;
+            }
+            else
+            {
+                var item = new ItineraryItem(ItineraryTitleBox.Text.Trim(),
+                    ItineraryDatePicker.SelectedDate.Value, time, type);
+                item.TripId = SelectedTrip.Id;
+                SelectedTrip.ItineraryItems.Add(item);
+            }
+
+            db.SaveChanges();
+            ClearItineraryForm();
+            RefreshTripLists();
+            DaysListBox_SelectionChanged(null, null);
         }
 
         private void CancelItineraryItem_Click(object sender, RoutedEventArgs e)
         {
+            editingItineraryItem = null;
             ClearItineraryForm();
         }
 
@@ -205,7 +256,7 @@ namespace OOD_Project2026_maxbatrak
             var booking = BookingsListView.SelectedItem as Booking;
             if (booking == null) return;
 
-            // Load selected booking into the form for viewing
+            editingBooking = booking;
             BookingReferenceBox.Text = booking.Reference;
             BookingTypeCombo.SelectedIndex = (int)booking.BookingType;
             BookingDatePicker.SelectedDate = booking.CheckInDate;
@@ -215,17 +266,56 @@ namespace OOD_Project2026_maxbatrak
 
         private void AddBooking_Click(object sender, RoutedEventArgs e)
         {
+            editingBooking = null;
             ClearBookingForm();
         }
 
         private void SaveBooking_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: validate fields, create/update Booking, save to database
-            MessageBox.Show("Save not yet implemented – coming soon.", "TODO", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (SelectedTrip == null)
+            {
+                MessageBox.Show("Please select a trip first.", "No Trip", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (BookingTypeCombo.SelectedIndex < 0 || !BookingDatePicker.SelectedDate.HasValue)
+            {
+                MessageBox.Show("Please fill in at least the type and date.", "Validation", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var type = (BookingType)BookingTypeCombo.SelectedIndex;
+            string title = !string.IsNullOrWhiteSpace(BookingFromBox.Text) && !string.IsNullOrWhiteSpace(BookingToBox.Text)
+                ? $"{BookingFromBox.Text.Trim()} to {BookingToBox.Text.Trim()}"
+                : BookingReferenceBox.Text.Trim();
+
+            if (editingBooking != null)
+            {
+                editingBooking.Title = title;
+                editingBooking.Reference = BookingReferenceBox.Text.Trim();
+                editingBooking.BookingType = type;
+                editingBooking.CheckInDate = BookingDatePicker.SelectedDate.Value;
+                editingBooking.Date = BookingDatePicker.SelectedDate.Value;
+                editingBooking.From = BookingFromBox.Text.Trim();
+                editingBooking.To = BookingToBox.Text.Trim();
+            }
+            else
+            {
+                var booking = new Booking(title, BookingReferenceBox.Text.Trim(), type,
+                    BookingDatePicker.SelectedDate.Value, null,
+                    BookingFromBox.Text.Trim(), BookingToBox.Text.Trim());
+                booking.TripId = SelectedTrip.Id;
+                SelectedTrip.Bookings.Add(booking);
+            }
+
+            db.SaveChanges();
+            ClearBookingForm();
+            RefreshTripLists();
         }
 
         private void CancelBooking_Click(object sender, RoutedEventArgs e)
         {
+            editingBooking = null;
             ClearBookingForm();
         }
 
@@ -244,7 +334,7 @@ namespace OOD_Project2026_maxbatrak
             var expense = ExpensesListView.SelectedItem as Expense;
             if (expense == null) return;
 
-            // Load selected expense into the form for viewing
+            editingExpense = expense;
             ExpenseCategoryCombo.SelectedIndex = (int)expense.Category;
             ExpenseTitleBox.Text = expense.Title;
             ExpenseAmountBox.Text = expense.Amount.ToString("F2");
@@ -253,17 +343,52 @@ namespace OOD_Project2026_maxbatrak
 
         private void AddExpense_Click(object sender, RoutedEventArgs e)
         {
+            editingExpense = null;
             ClearExpenseForm();
         }
 
         private void SaveExpense_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: validate fields, create/update Expense, save to database
-            MessageBox.Show("Save not yet implemented – coming soon.", "TODO", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (SelectedTrip == null)
+            {
+                MessageBox.Show("Please select a trip first.", "No Trip", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(ExpenseTitleBox.Text) ||
+                ExpenseCategoryCombo.SelectedIndex < 0 ||
+                !decimal.TryParse(ExpenseAmountBox.Text, out decimal amount) ||
+                ExpensePaidCombo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please fill in all fields with valid values.", "Validation", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var category = (ExpenseCategory)ExpenseCategoryCombo.SelectedIndex;
+            bool isPaid = ExpensePaidCombo.SelectedIndex == 0;
+
+            if (editingExpense != null)
+            {
+                editingExpense.Title = ExpenseTitleBox.Text.Trim();
+                editingExpense.Category = category;
+                editingExpense.Amount = amount;
+                editingExpense.IsPaid = isPaid;
+            }
+            else
+            {
+                var expense = new Expense(ExpenseTitleBox.Text.Trim(), category, amount, isPaid);
+                expense.TripId = SelectedTrip.Id;
+                SelectedTrip.Expenses.Add(expense);
+            }
+
+            db.SaveChanges();
+            ClearExpenseForm();
+            RefreshTripLists();
         }
 
         private void CancelExpense_Click(object sender, RoutedEventArgs e)
         {
+            editingExpense = null;
             ClearExpenseForm();
         }
 

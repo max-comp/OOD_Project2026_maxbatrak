@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OOD_Project2026_maxbatrak.Models
 {
-    public class ItineraryItem : TripItem
+    public class ItineraryItem : TripItem, ISearchable, IDeletable
     {
         //Foreign key back to Trip
         public int TripId { get; set; }
@@ -38,6 +38,22 @@ namespace OOD_Project2026_maxbatrak.Models
         public string TimeDisplay
         {
             get { return DateTime.Today.Add(Time).ToString("hh:mm tt"); }
+        }
+
+        // ISearchable
+        public bool MatchesSearch(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query)) return true;
+            query = query.ToLower();
+            return Title.ToLower().Contains(query) ||
+                   ItemType.ToString().ToLower().Contains(query);
+        }
+
+        // IDeletable
+        [NotMapped]
+        public string DeleteConfirmationMessage
+        {
+            get { return $"Delete itinerary item \"{Title}\"?"; }
         }
     }
 }

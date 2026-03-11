@@ -10,7 +10,7 @@ namespace OOD_Project2026_maxbatrak.Models
 {
     //Represents a single trip.
     //Acts as the top-level container holding all itinerary items, bookings, and expenses for that trip.
-    public class Trip
+    public class Trip : ISearchable, IDeletable
     {
         [Key]
         public int Id { get; set; }
@@ -78,6 +78,20 @@ namespace OOD_Project2026_maxbatrak.Models
         public override string ToString()
         {
             return $"{Name} ({StartDate:MMM dd} – {EndDate:MMM dd})";
+        }
+
+        // ISearchable
+        public bool MatchesSearch(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query)) return true;
+            return Name.ToLower().Contains(query.ToLower());
+        }
+
+        // IDeletable
+        [NotMapped]
+        public string DeleteConfirmationMessage
+        {
+            get { return $"Delete trip \"{Name}\" and all its items?"; }
         }
     }
 }
