@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using OOD_Project2026_maxbatrak.Data;
 using OOD_Project2026_maxbatrak.Models;
+using OOD_Project2026_maxbatrak.Services;
 
 namespace OOD_Project2026_maxbatrak
 {
@@ -103,20 +104,62 @@ namespace OOD_Project2026_maxbatrak
             {
                 SummaryPlaceholder.Visibility = Visibility.Visible;
                 SummaryPanel.Visibility = Visibility.Collapsed;
+                WelcomePanel.Visibility = Visibility.Visible;
+                CountryPanel.Visibility = Visibility.Collapsed;
                 return;
             }
 
             RefreshTripLists();
+            ShowCountryInfo(SelectedTrip);
+        }
+
+        private void ShowCountryInfo(Trip trip)
+        {
+            if (!string.IsNullOrEmpty(trip.FlagUrl))
+            {
+                try
+                {
+                    FlagImage.Source = new BitmapImage(new Uri(trip.FlagUrl));
+                }
+                catch
+                {
+                    FlagImage.Source = null;
+                }
+
+                CountryNameText.Text     = trip.Destination;
+                CountryCapitalText.Text  = string.Empty;
+                CountryCurrencyText.Text = !string.IsNullOrEmpty(trip.CurrencyCode)
+                    ? $"Currency: {trip.CurrencyCode}"
+                    : string.Empty;
+                CountryRegionText.Text   = string.Empty;
+
+                // Fetch fresh details (capital, region) from the API
+                CountryInfo info = CountryService.GetCountryInfo(trip.Destination);
+                if (info != null)
+                {
+                    CountryCapitalText.Text = !string.IsNullOrEmpty(info.Capital) ? $"Capital: {info.Capital}" : string.Empty;
+                    CountryRegionText.Text  = !string.IsNullOrEmpty(info.Region)  ? $"Region: {info.Region}"   : string.Empty;
+                    if (!string.IsNullOrEmpty(info.CurrencyName))
+                        CountryCurrencyText.Text = $"Currency: {info.CurrencyCode} – {info.CurrencyName}";
+                }
+
+                WelcomePanel.Visibility = Visibility.Collapsed;
+                CountryPanel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                WelcomePanel.Visibility = Visibility.Visible;
+                CountryPanel.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void AddTrip_Click(object sender, RoutedEventArgs e)
         {
-            // Simple input
             var dialog = new Window
             {
                 Title = "New Trip",
                 Width = 320,
-                Height = 280,
+                Height = 320,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,
                 Owner = this,
                 ResizeMode = ResizeMode.NoResize
@@ -127,6 +170,10 @@ namespace OOD_Project2026_maxbatrak
             stack.Children.Add(new TextBlock { Text = "Trip Name" });
             var nameBox = new TextBox { Margin = new Thickness(0, 4, 0, 8) };
             stack.Children.Add(nameBox);
+
+            stack.Children.Add(new TextBlock { Text = "Destination Country" });
+            var destinationBox = new TextBox { Margin = new Thickness(0, 4, 0, 8) };
+            stack.Children.Add(destinationBox);
 
             stack.Children.Add(new TextBlock { Text = "Start Date" });
             var startPicker = new DatePicker { Margin = new Thickness(0, 4, 0, 8) };
@@ -158,6 +205,23 @@ namespace OOD_Project2026_maxbatrak
                 }
 
                 var trip = new Trip(nameBox.Text.Trim(), startPicker.SelectedDate.Value, endPicker.SelectedDate.Value);
+
+                // Look up country info from the API if a destination was entered
+                if (!string.IsNullOrWhiteSpace(destinationBox.Text))
+                {
+                    CountryInfo info = CountryService.GetCountryInfo(destinationBox.Text.Trim());
+                    if (info != null)
+                    {
+                        trip.Destination    = info.CommonName;
+                        trip.FlagUrl        = info.FlagUrl;
+                        trip.CurrencyCode   = info.CurrencyCode;
+                    }
+                    else
+                    {
+                        trip.Destination = destinationBox.Text.Trim();
+                    }
+                }
+
                 db.Trips.Add(trip);
                 db.SaveChanges();
 
@@ -232,8 +296,20 @@ namespace OOD_Project2026_maxbatrak
 
             db.SaveChanges();
             ClearItineraryForm();
+
+            // Remember which day was selected before refresh resets the list
+            int selectedDayIndex = DaysListBox.SelectedIndex;
+
+            // Reload the trip's items from the database so the list is up to date
+            db.Entry(SelectedTrip).Collection(t => t.ItineraryItems).Load();
+
             RefreshTripLists();
-            DaysListBox_SelectionChanged(null, null);
+
+            // Restore the day selection so the items list refreshes correctly
+            if (selectedDayIndex >= 0)
+            {
+                DaysListBox.SelectedIndex = selectedDayIndex;
+            }
         }
 
         private void CancelItineraryItem_Click(object sender, RoutedEventArgs e)

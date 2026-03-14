@@ -50,3 +50,5 @@ C:\Users\maxba\OneDrive - Atlantic TU\Documents\2 Year\OOD\Personal Project\OOD_
 C:\Users\maxba\OneDrive - Atlantic TU\Documents\2 Year\OOD\Personal Project\OOD_Project2026_maxbatrak\OOD_Project2026_maxbatrak\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\maxba\OneDrive - Atlantic TU\Documents\2 Year\OOD\Personal Project\OOD_Project2026_maxbatrak\OOD_Project2026_maxbatrak\bin\Debug\EntityFramework.xml
 C:\Users\maxba\OneDrive - Atlantic TU\Documents\2 Year\OOD\Personal Project\OOD_Project2026_maxbatrak\OOD_Project2026_maxbatrak\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\maxba\OneDrive - Atlantic TU\Documents\2 Year\OOD\Personal Project\OOD_Project2026_maxbatrak\OOD_Project2026_maxbatrak\bin\Debug\Newtonsoft.Json.dll
+C:\Users\maxba\OneDrive - Atlantic TU\Documents\2 Year\OOD\Personal Project\OOD_Project2026_maxbatrak\OOD_Project2026_maxbatrak\bin\Debug\Newtonsoft.Json.xml

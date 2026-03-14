@@ -1,4 +1,5 @@
 using System.Data.Entity;
+using System.Data.Entity;
 using OOD_Project2026_maxbatrak.Models;
 
 namespace OOD_Project2026_maxbatrak.Data
@@ -11,6 +12,8 @@ namespace OOD_Project2026_maxbatrak.Data
         public TripPlannerContext()
             : base("name=TripPlannerDb")
         {
+            // Drop and recreate the database when the model changes
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<TripPlannerContext>());
         }
 
         public DbSet<Trip> Trips { get; set; }

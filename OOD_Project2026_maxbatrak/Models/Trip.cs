@@ -1,5 +1,4 @@
 using System;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
@@ -18,6 +17,11 @@ namespace OOD_Project2026_maxbatrak.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
+        // Populated from the RestCountries API lookup
+        public string Destination { get; set; }
+        public string FlagUrl { get; set; }
+        public string CurrencyCode { get; set; }
+ 
         //navigation properties — use List<T> so EF can persist them
         public virtual List<ItineraryItem> ItineraryItems { get; set; }
         public virtual List<Booking> Bookings { get; set; }
