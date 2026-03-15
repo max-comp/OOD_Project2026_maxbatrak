@@ -240,6 +240,10 @@ namespace OOD_Project2026_maxbatrak
 
             ItineraryListView.ItemsSource = new ObservableCollection<ItineraryItem>(
                 SelectedTrip.GetItemsForDay(selectedDay));
+
+            // Clear the edit form so a previously selected item doesn't stay visible
+            editingItineraryItem = null;
+            ClearItineraryForm();
         }
 
         private void ItineraryListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

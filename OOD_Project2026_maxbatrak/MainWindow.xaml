@@ -9,6 +9,54 @@
         Title="MainWindow" Height="650" Width="1000"
         Style="{StaticResource MaterialDesignWindow}">
 
+    <Window.Resources>
+
+        <!-- DataTemplate: how each Trip appears in the Trips ListBox -->
+        <DataTemplate x:Key="TripItemTemplate">
+            <StackPanel Margin="2,4">
+                <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="13" />
+                <TextBlock Text="{Binding Destination}" Foreground="Gray" FontSize="11" />
+                <TextBlock FontSize="11" Foreground="#888">
+                    <Run Text="{Binding StartDate, StringFormat=MMM dd yyyy}" />
+                    <Run Text=" – " />
+                    <Run Text="{Binding EndDate, StringFormat=MMM dd yyyy}" />
+                </TextBlock>
+            </StackPanel>
+        </DataTemplate>
+
+        <!-- DataTemplate: how each Expense row appears in the Expenses ListView -->
+        <DataTemplate x:Key="ExpenseRowTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding Title}" VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1" Text="{Binding Category}" VerticalAlignment="Center" />
+                <!-- Amount is green when paid, red when owed -->
+                <TextBlock Grid.Column="2" Text="{Binding AmountDisplay}" VerticalAlignment="Center"
+                           Foreground="{Binding IsPaid, Converter={x:Static local:BoolToBrushConverter.Instance}}" FontWeight="SemiBold" />
+                <TextBlock Grid.Column="3" Text="{Binding PaidDisplay}" VerticalAlignment="Center" FontSize="11" Foreground="Gray" />
+            </Grid>
+        </DataTemplate>
+
+        <!-- DataTemplate: how each Booking row appears in the Bookings ListView -->
+        <DataTemplate x:Key="BookingRowTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Border Background="#E3F2FD" CornerRadius="3" Padding="4,1" Margin="0,0,8,0">
+                    <TextBlock Text="{Binding BookingType}" FontSize="11" Foreground="#1565C0" />
+                </Border>
+                <StackPanel>
+                    <TextBlock Text="{Binding Title}" FontWeight="SemiBold" />
+                    <TextBlock Text="{Binding DateDisplay}" FontSize="11" Foreground="Gray" />
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+
+    </Window.Resources>
+
     <TabControl x:Name="MainTabs" TabStripPlacement="Bottom">
         <TabItem x:Name="HomeTab" Header="Home">
             <Grid Margin="16">
@@ -30,7 +78,9 @@
                     <GroupBox Header="Trips List" Margin="0,0,8,0">
                         <DockPanel>
                             <Button DockPanel.Dock="Bottom" Content="Add Trip" Margin="8" Click="AddTrip_Click" />
-                            <ListBox x:Name="TripsListBox" Margin="8" DisplayMemberPath="Name" SelectionChanged="TripsListBox_SelectionChanged" />
+                            <ListBox x:Name="TripsListBox" Margin="8"
+                                     ItemTemplate="{StaticResource TripItemTemplate}"
+                                     SelectionChanged="TripsListBox_SelectionChanged" />
                         </DockPanel>
                     </GroupBox>
 
@@ -164,14 +214,9 @@
                     <GroupBox Header="Booking List" Margin="0,0,8,0">
                         <DockPanel>
                             <Button DockPanel.Dock="Bottom" Content="Add Booking" Margin="8" Click="AddBooking_Click" />
-                            <ListView x:Name="BookingsListView" Margin="8" SelectionChanged="BookingsListView_SelectionChanged">
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="Booking" Width="180" DisplayMemberBinding="{Binding Title}" />
-                                        <GridViewColumn Header="Dates" Width="140" DisplayMemberBinding="{Binding DateDisplay}" />
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
+                            <ListView x:Name="BookingsListView" Margin="8"
+                                      ItemTemplate="{StaticResource BookingRowTemplate}"
+                                      SelectionChanged="BookingsListView_SelectionChanged" />
                         </DockPanel>
                     </GroupBox>
 
@@ -225,15 +270,9 @@
                     <GroupBox Header="Expenses List" Margin="0,0,8,0">
                         <DockPanel>
                             <Button DockPanel.Dock="Bottom" Content="Add Expense" Margin="8" Click="AddExpense_Click" />
-                            <ListView x:Name="ExpensesListView" Margin="8" SelectionChanged="ExpensesListView_SelectionChanged">
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="Title" Width="140" DisplayMemberBinding="{Binding Title}" />
-                                        <GridViewColumn Header="Category" Width="120" DisplayMemberBinding="{Binding Category}" />
-                                        <GridViewColumn Header="Amount" Width="80" DisplayMemberBinding="{Binding AmountDisplay}" />
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
+                            <ListView x:Name="ExpensesListView" Margin="8"
+                                      ItemTemplate="{StaticResource ExpenseRowTemplate}"
+                                      SelectionChanged="ExpensesListView_SelectionChanged" />
                         </DockPanel>
                     </GroupBox>
 
