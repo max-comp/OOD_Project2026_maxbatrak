@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\ood_project2026_maxbatrak\\converters\\booltobrushconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\converters\\booltobrushconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\ood_project2026_maxbatrak\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\ood_project2026_maxbatrak\\converters\\booltobrushconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|solutionrelative:ood_project2026_maxbatrak\\converters\\booltobrushconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D08B033C-1C92-4B33-BB86-8AA46139BF70}|OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak.csproj|C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\ood_project2026_maxbatrak\\models\\interfaces.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -66,7 +66,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "BoolToBrushConverter.cs",
               "DocumentMoniker": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\Converters\\BoolToBrushConverter.cs",
               "RelativeDocumentMoniker": "OOD_Project2026_maxbatrak\\Converters\\BoolToBrushConverter.cs",
@@ -96,7 +96,7 @@
               "RelativeDocumentMoniker": "OOD_Project2026_maxbatrak\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\MainWindow.xaml.cs",
               "RelativeToolTip": "OOD_Project2026_maxbatrak\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAOkBAAAAAAAAAAAAAOkBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAN0BAAAAAAAAAAAwwO4BAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-26T21:30:40.887Z",
               "EditorCaption": ""
@@ -163,17 +163,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "OOD_Project2026_maxbatrak\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\MainWindow.xaml",
-              "RelativeToolTip": "OOD_Project2026_maxbatrak\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-02-26T21:30:38.01Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 6,
               "Title": "TripItem.cs",
               "DocumentMoniker": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\Models\\TripItem.cs",
@@ -219,6 +208,39 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-14T19:52:08.975Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "8c6af91d-eeef-42a8-b49b-54851d65ec12",
+        "Display": 0,
+        "X": 33,
+        "Y": 75,
+        "Width": 1391,
+        "Height": 766,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "OOD_Project2026_maxbatrak\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\maxba\\OneDrive - Atlantic TU\\Documents\\2 Year\\OOD\\Personal Project\\OOD_Project2026_maxbatrak\\OOD_Project2026_maxbatrak\\MainWindow.xaml",
+              "RelativeToolTip": "OOD_Project2026_maxbatrak\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-26T21:30:38.01Z",
+              "EditorCaption": ""
             }
           ]
         }

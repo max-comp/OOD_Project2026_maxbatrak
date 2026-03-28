@@ -480,6 +480,34 @@ namespace OOD_Project2026_maxbatrak
             ExpensePaidCombo.SelectedIndex = -1;
         }
 
+        // SEARCH HANDLERS
+        private void TripSearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (trips == null) return;
+
+            string query = TripSearchBox.Text;
+            var filtered = trips.Where(t => t.MatchesSearch(query)).ToList();
+            TripsListBox.ItemsSource = new ObservableCollection<Trip>(filtered);
+        }
+
+        private void BookingSearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SelectedTrip == null) return;
+
+            string query = BookingSearchBox.Text;
+            var filtered = SelectedTrip.Bookings.Where(b => b.MatchesSearch(query)).ToList();
+            BookingsListView.ItemsSource = new ObservableCollection<Booking>(filtered);
+        }
+
+        private void ExpenseSearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SelectedTrip == null) return;
+
+            string query = ExpenseSearchBox.Text;
+            var filtered = SelectedTrip.Expenses.Where(ex => ex.MatchesSearch(query)).ToList();
+            ExpensesListView.ItemsSource = new ObservableCollection<Expense>(filtered);
+        }
+
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);

@@ -78,6 +78,9 @@
                     <GroupBox Header="Trips List" Margin="0,0,8,0">
                         <DockPanel>
                             <Button DockPanel.Dock="Bottom" Content="Add Trip" Margin="8" Click="AddTrip_Click" />
+                            <TextBox x:Name="TripSearchBox" DockPanel.Dock="Top" Margin="8,8,8,0"
+                                     materialDesign:HintAssist.Hint="Search trips…"
+                                     TextChanged="TripSearchBox_TextChanged" />
                             <ListBox x:Name="TripsListBox" Margin="8"
                                      ItemTemplate="{StaticResource TripItemTemplate}"
                                      SelectionChanged="TripsListBox_SelectionChanged" />
@@ -214,6 +217,9 @@
                     <GroupBox Header="Booking List" Margin="0,0,8,0">
                         <DockPanel>
                             <Button DockPanel.Dock="Bottom" Content="Add Booking" Margin="8" Click="AddBooking_Click" />
+                            <TextBox x:Name="BookingSearchBox" DockPanel.Dock="Top" Margin="8,8,8,0"
+                                     materialDesign:HintAssist.Hint="Search bookings…"
+                                     TextChanged="BookingSearchBox_TextChanged" />
                             <ListView x:Name="BookingsListView" Margin="8"
                                       ItemTemplate="{StaticResource BookingRowTemplate}"
                                       SelectionChanged="BookingsListView_SelectionChanged" />
@@ -270,6 +276,9 @@
                     <GroupBox Header="Expenses List" Margin="0,0,8,0">
                         <DockPanel>
                             <Button DockPanel.Dock="Bottom" Content="Add Expense" Margin="8" Click="AddExpense_Click" />
+                            <TextBox x:Name="ExpenseSearchBox" DockPanel.Dock="Top" Margin="8,8,8,0"
+                                     materialDesign:HintAssist.Hint="Search expenses…"
+                                     TextChanged="ExpenseSearchBox_TextChanged" />
                             <ListView x:Name="ExpensesListView" Margin="8"
                                       ItemTemplate="{StaticResource ExpenseRowTemplate}"
                                       SelectionChanged="ExpensesListView_SelectionChanged" />
