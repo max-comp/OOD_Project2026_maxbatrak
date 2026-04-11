@@ -1,4 +1,5 @@
 using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
@@ -88,7 +89,8 @@ namespace OOD_Project2026_maxbatrak.Models
         public bool MatchesSearch(string query)
         {
             if (string.IsNullOrWhiteSpace(query)) return true;
-            return Name.ToLower().Contains(query.ToLower());
+            return (Name ?? "").ToLower().Contains(query.ToLower())
+                || (Destination ?? "").ToLower().Contains(query.ToLower());
         }
 
         // IDeletable

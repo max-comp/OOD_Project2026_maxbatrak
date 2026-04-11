@@ -77,7 +77,10 @@
 
                     <GroupBox Header="Trips List" Margin="0,0,8,0">
                         <DockPanel>
-                            <Button DockPanel.Dock="Bottom" Content="Add Trip" Margin="8" Click="AddTrip_Click" />
+                            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Margin="8">
+                                <Button Content="Add Trip" Margin="0,0,8,0" Click="AddTrip_Click" />
+                                <Button Content="Delete Trip" Click="DeleteTrip_Click" />
+                            </StackPanel>
                             <TextBox x:Name="TripSearchBox" DockPanel.Dock="Top" Margin="8,8,8,0"
                                      materialDesign:HintAssist.Hint="Search trips…"
                                      TextChanged="TripSearchBox_TextChanged" />
@@ -191,6 +194,7 @@
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <Button Content="Save" Margin="0,0,8,0" Click="SaveItineraryItem_Click" />
+                                <Button Content="Delete" Margin="0,0,8,0" Click="DeleteItineraryItem_Click" />
                                 <Button Content="Cancel" Click="CancelItineraryItem_Click" />
                             </StackPanel>
                         </StackPanel>
@@ -250,6 +254,7 @@
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <Button Content="Save" Margin="0,0,8,0" Click="SaveBooking_Click" />
+                                <Button Content="Delete" Margin="0,0,8,0" Click="DeleteBooking_Click" />
                                 <Button Content="Cancel" Click="CancelBooking_Click" />
                             </StackPanel>
                         </StackPanel>
@@ -309,6 +314,7 @@
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <Button Content="Save" Margin="0,0,8,0" Click="SaveExpense_Click" />
+                                <Button Content="Delete" Margin="0,0,8,0" Click="DeleteExpense_Click" />
                                 <Button Content="Cancel" Click="CancelExpense_Click" />
                             </StackPanel>
                         </StackPanel>

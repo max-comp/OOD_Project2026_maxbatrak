@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using OOD_Project2026_maxbatrak.Data;
 using OOD_Project2026_maxbatrak.Models;
 using OOD_Project2026_maxbatrak.Services;
@@ -204,6 +196,12 @@ namespace OOD_Project2026_maxbatrak
                     return;
                 }
 
+                if (endPicker.SelectedDate.Value < startPicker.SelectedDate.Value)
+                {
+                    MessageBox.Show("End date cannot be before start date.", "Validation", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 var trip = new Trip(nameBox.Text.Trim(), startPicker.SelectedDate.Value, endPicker.SelectedDate.Value);
 
                 // Look up country info from the API if a destination was entered
@@ -228,6 +226,23 @@ namespace OOD_Project2026_maxbatrak
                 trips.Add(trip);
                 TripsListBox.SelectedItem = trip;
             }
+        }
+
+        private void DeleteTrip_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedTrip == null)
+            {
+                MessageBox.Show("Please select a trip to delete.", "No Selection", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!ConfirmDelete(SelectedTrip)) return;
+
+            var trip = SelectedTrip;
+            db.Trips.Remove(trip);
+            db.SaveChanges();
+            trips.Remove(trip);
+            TripsListBox.ItemsSource = trips;
         }
 
         //Itenerary Tab
@@ -322,6 +337,25 @@ namespace OOD_Project2026_maxbatrak
             ClearItineraryForm();
         }
 
+        private void DeleteItineraryItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (editingItineraryItem == null)
+            {
+                MessageBox.Show("Please select an itinerary item to delete.", "No Selection", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!ConfirmDelete(editingItineraryItem)) return;
+
+            SelectedTrip.ItineraryItems.Remove(editingItineraryItem);
+            db.ItineraryItems.Remove(editingItineraryItem);
+            db.SaveChanges();
+
+            editingItineraryItem = null;
+            ClearItineraryForm();
+            RefreshTripLists();
+        }
+
         private void ClearItineraryForm()
         {
             ItineraryTitleBox.Text = "";
@@ -399,6 +433,25 @@ namespace OOD_Project2026_maxbatrak
             ClearBookingForm();
         }
 
+        private void DeleteBooking_Click(object sender, RoutedEventArgs e)
+        {
+            if (editingBooking == null)
+            {
+                MessageBox.Show("Please select a booking to delete.", "No Selection", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!ConfirmDelete(editingBooking)) return;
+
+            SelectedTrip.Bookings.Remove(editingBooking);
+            db.Bookings.Remove(editingBooking);
+            db.SaveChanges();
+
+            editingBooking = null;
+            ClearBookingForm();
+            RefreshTripLists();
+        }
+
         private void ClearBookingForm()
         {
             BookingReferenceBox.Text = "";
@@ -472,12 +525,39 @@ namespace OOD_Project2026_maxbatrak
             ClearExpenseForm();
         }
 
+        private void DeleteExpense_Click(object sender, RoutedEventArgs e)
+        {
+            if (editingExpense == null)
+            {
+                MessageBox.Show("Please select an expense to delete.", "No Selection", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!ConfirmDelete(editingExpense)) return;
+
+            SelectedTrip.Expenses.Remove(editingExpense);
+            db.Expenses.Remove(editingExpense);
+            db.SaveChanges();
+
+            editingExpense = null;
+            ClearExpenseForm();
+            RefreshTripLists();
+        }
+
         private void ClearExpenseForm()
         {
             ExpenseCategoryCombo.SelectedIndex = -1;
             ExpenseTitleBox.Text = "";
             ExpenseAmountBox.Text = "";
             ExpensePaidCombo.SelectedIndex = -1;
+        }
+
+        // Uses IDeletable to show a confirmation prompt before any delete
+        private bool ConfirmDelete(IDeletable item)
+        {
+            var result = MessageBox.Show(item.DeleteConfirmationMessage, "Confirm Delete",
+                MessageBoxButton.YesNo, MessageBoxImage.Question);
+            return result == MessageBoxResult.Yes;
         }
 
         // SEARCH HANDLERS
