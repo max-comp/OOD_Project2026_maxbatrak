@@ -1,5 +1,4 @@
 using System.Data.Entity;
-using System.Data.Entity;
 using OOD_Project2026_maxbatrak.Models;
 
 namespace OOD_Project2026_maxbatrak.Data
